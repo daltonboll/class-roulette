@@ -17,6 +17,7 @@ gem 'rails_12factor', group: :production # for heroku production
 gem 'devise'
 gem 'cancancan'
 gem 'simple_form'
+gem 'annotate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
