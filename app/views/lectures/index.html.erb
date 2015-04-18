@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Lectures</h1>
+<h1>Listing All Lectures For <%= @course.name %></h1>
 
 <table>
   <thead>
@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @lectures.each do |lecture| %>
+    <% @course.lectures.each do |lecture| %>
       <tr>
         <td><%= lecture.day %></td>
         <td><%= lecture.time %></td>
-        <td><%= link_to 'Show', lecture %></td>
-        <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
-        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', course_lecture_path(lecture.course_id, lecture.id) %></td>
+        <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course_id, lecture.id) %></td>
+        <td><%= link_to 'Destroy', course_lecture_path(lecture.course_id, lecture.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Lecture', new_lecture_path %>
+<%= link_to 'New Lecture', new_course_lecture_path(@course.id) %>

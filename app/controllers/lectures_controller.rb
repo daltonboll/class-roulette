@@ -1,5 +1,7 @@
 class LecturesController < ApplicationController
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /lectures
   # GET /lectures.json
@@ -65,6 +67,10 @@ class LecturesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lecture
       @lecture = Lecture.find(params[:id])
+    end
+
+    def set_course
+      @course = Course.find(params[:course_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
