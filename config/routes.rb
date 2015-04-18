@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :messages
-
-  resources :lectures
-
   devise_for :users
+  resources :users, only: [:index] # for a users index
   root 'pages#home'
 
   # add CRUD operations
