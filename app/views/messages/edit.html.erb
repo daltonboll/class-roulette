@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @message %> |
-<%= link_to 'Back', messages_path %>
+<%= link_to 'Show', course_lecture_message_path(@course, @lecture, @message) %> |
+<%= link_to 'Back', course_lecture_messages_path(@course, @lecture) %>

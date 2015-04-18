@@ -10,5 +10,5 @@
   <%= @lecture.time %>
 </p>
 
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<%= link_to 'Back', lectures_path %>
+<%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
+<%= link_to 'Back', course_lectures_path(@course) %>
