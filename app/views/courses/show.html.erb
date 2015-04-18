@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
+<h1>Viewing Course: <%= @course.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<h3>Lecture Times</h3>
+<ul>
+  <% @course.lectures.each do |lecture| %>
+    <li><%= "#{lecture.day} at #{lecture.time}" %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
