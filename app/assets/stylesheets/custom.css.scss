@@ -1,0 +1,200 @@
+/* for nav menu toggle */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+$dark-blue-pastel: #3B5998;
+$light-blue-pastel: #639BF1;
+$light-blue-pastel-light: #8AB4F7;
+
+/* universal */
+section {
+  overflow: auto;
+}
+
+.center {
+  text-align: center;
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+#content {
+  overflow: auto;
+  background-color: white;
+  margin: auto;
+  margin-bottom: 20px;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.padded-content {
+  padding-left: 12%;
+  padding-right: 12%;
+  text-align: left;
+}
+
+hr {
+  border-width: 3px 0;
+  width: 80%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* typography */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 50px;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h3 {
+  font-size: 35px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h4 {
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h5 {
+  font-size: 25px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h6 {
+  font-size: 21px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 19px;
+  margin: 6px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 19px;
+}
+
+a {
+  color: $light-blue-pastel;
+  font-weight: bold;
+
+  &:hover {
+    color: $light-blue-pastel-light;
+  }
+}
+
+
+/* images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pad-image {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  font-size: 22px;
+
+  a {
+    color: white;
+  }
+}
+
+.navbar {
+  background-color: $dark-blue-pastel;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+  font-size: 22px;
+  font-weight: normal;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-right: 13px;
+  padding-left: 13px;
+}
+
+
+/* footer */
+#footer-bar {
+  height: 110px;
+  bottom: 0;
+  width: 100%;
+  padding-top: 5px;
+  color: white;
+  background-color: $dark-blue-pastel;
+
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+}

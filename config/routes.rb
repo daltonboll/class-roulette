@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index] # for a users index
   root 'pages#home'
+  get 'about' => "pages#about"
+  get 'contact' => "pages#contact"
 
   # add CRUD operations
   resources :courses do

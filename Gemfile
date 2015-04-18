@@ -18,6 +18,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'simple_form'
 gem 'annotate'
+gem 'bootstrap-sass', '~> 3.2.0' # for bootstrap
+gem 'autoprefixer-rails' #for bootstrap
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
