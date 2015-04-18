@@ -7,7 +7,7 @@
 #  time       :time
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  courses_id :integer
+#  course_id  :integer
 #
 
 require 'test_helper'
