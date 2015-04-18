@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @course.name %></h1>
+<h2><%= "#{@lecture.day} at #{@lecture.time}" %></h2>
 
-<p>
-  <strong>Day:</strong>
-  <%= @lecture.day %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @lecture.time %>
-</p>
+<hr/>
+<h3>Chat Room</h3>
+<% @lecture.messages.each do |message| %>
+  <p><strong><%= "#{message.user.name}" %></strong><%= " said: #{message.text} at #{message.created_at}" %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
 <%= link_to 'Back', course_lectures_path(@course) %>
