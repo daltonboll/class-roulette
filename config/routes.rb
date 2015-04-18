@@ -2,6 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'pages#home'
+
+  # add CRUD operations
+  resources :courses do
+    resources :lectures do
+      resources :messages
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
