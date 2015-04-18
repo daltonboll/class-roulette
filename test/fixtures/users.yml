@@ -16,7 +16,6 @@
 #  name                   :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  messages_id            :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
