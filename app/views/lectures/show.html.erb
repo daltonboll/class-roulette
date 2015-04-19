@@ -4,9 +4,19 @@
 
 <hr/>
 <h3>Chat Room</h3>
+<div class="message-area">
 <% @lecture.messages.each do |message| %>
-  <p><strong><%= "#{message.user.name}" %></strong><%= " said: #{message.text} at #{message.created_at}" %></p>
+	<% if message.user == current_user %>
+		<div class="user-message">
+	<% else %>
+		<div class="other-user-message">
+	<% end %>
+  	<%= render message %>
+  	</div>
 <% end %>
+<!-- Uncomment to see a current-user-style message until message creation has been implemented -->
+<!-- <div class="user-message"><%= render @lecture.messages.first %></div> -->
+</div>
 
 <%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
 <%= link_to 'Back', course_lectures_path(@course) %>
