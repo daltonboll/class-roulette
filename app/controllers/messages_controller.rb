@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.lecture_id = @lecture.id
+    @message.user_id = current_user.id
 
     respond_to do |format|
       if @message.save
@@ -45,8 +46,8 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @message }
+        format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Message was successfully updated.' }
+        format.json { render :show, status: :ok, location: course_lecture_path(@course, @lecture) }
       else
         format.html { render :edit }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -59,7 +60,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
+      format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Message was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
