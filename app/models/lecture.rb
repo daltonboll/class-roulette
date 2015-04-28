@@ -34,7 +34,7 @@ class Lecture < ActiveRecord::Base
     return self.time.strftime("%B")
   end
 
-  def day
+  def day_as_number
     return self.time.strftime("%d")
   end
 
