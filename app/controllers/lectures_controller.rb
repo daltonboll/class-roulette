@@ -1,5 +1,5 @@
 class LecturesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :new, :refresh_messages]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :new, :create, :refresh_messages]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy, :refresh_messages]
   
 
@@ -37,11 +37,12 @@ class LecturesController < ApplicationController
       redirect_to course_lectures_path(@course)
     else
       @lecture = Lecture.new(lecture_params)
+      @lecture.course_id = @course.id
 
       respond_to do |format|
         if @lecture.save
-          format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
-          format.json { render :show, status: :created, location: @lecture }
+          format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully created.' }
+          format.json { render :show, status: :created, location: course_lecture_path(@course, @lecture) }
         else
           format.html { render :new }
           format.json { render json: @lecture.errors, status: :unprocessable_entity }
@@ -58,8 +59,8 @@ class LecturesController < ApplicationController
     else
       respond_to do |format|
         if @lecture.update(lecture_params)
-          format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
-          format.json { render :show, status: :ok, location: @lecture }
+          format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully updated.' }
+          format.json { render :show, status: :ok, location: course_lecture_path(@course, @lecture) }
         else
           format.html { render :edit }
           format.json { render json: @lecture.errors, status: :unprocessable_entity }
@@ -76,7 +77,7 @@ class LecturesController < ApplicationController
     else
       @lecture.destroy
       respond_to do |format|
-        format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
+        format.html { redirect_to course_lectures_path(@course), notice: 'Lecture was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

@@ -1,6 +1,17 @@
 <h1>Editing Lecture</h1>
 
-<%= render 'form' %>
+<%= simple_form_for(@lecture, url: course_lecture_path(@course, @lecture)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :day, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
+    <%= f.input :time %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', course_lecture_path(@course, @lecture) %> |
-<%= link_to 'Back', course_lectures_path(@course) %>
+<%= link_to 'Back', course_lecture_path(@course, @lecture) %>
