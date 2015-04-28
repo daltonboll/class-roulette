@@ -1,4 +1,4 @@
-<%= simple_form_for(@lecture, url: course_lectures_path) do |f| %>
+<%= simple_form_for(@lecture, url: course_lecture_path(@course, @lecture)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

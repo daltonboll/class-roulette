@@ -59,8 +59,8 @@ class LecturesController < ApplicationController
     else
       respond_to do |format|
         if @lecture.update(lecture_params)
-          format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
-          format.json { render :show, status: :ok, location: @lecture }
+          format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully updated.' }
+          format.json { render :show, status: :ok, location: course_lecture_path(@course, @lecture) }
         else
           format.html { render :edit }
           format.json { render json: @lecture.errors, status: :unprocessable_entity }

@@ -36,7 +36,7 @@
 <% end %>
 
 <% if user_signed_in? and current_user.is_admin %>
-<%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
+<%= link_to 'Edit Lecture', edit_course_lecture_path(@course, @lecture) %> |
 <% end %>
 <%= link_to 'Back', course_lectures_path(@course) %>
 
