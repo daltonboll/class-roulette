@@ -17,8 +17,10 @@
         <td><%= lecture.day %></td>
         <td><%= lecture.time %></td>
         <td><%= link_to 'Show', course_lecture_path(lecture.course_id, lecture.id) %></td>
+        <% if user_signed_in? and current_user.is_admin %>
         <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course_id, lecture.id) %></td>
         <td><%= link_to 'Destroy', course_lecture_path(lecture.course_id, lecture.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,6 @@
 
 <br>
 
+<% if user_signed_in? and current_user.is_admin %>
 <%= link_to 'New Lecture', new_course_lecture_path(@course.id) %>
+<% end %>

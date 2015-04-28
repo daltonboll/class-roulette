@@ -8,5 +8,7 @@
   <% end %>
 </ul>
 
+<% if user_signed_in? and current_user.is_admin %>
 <%= link_to 'Edit', edit_course_path(@course) %> |
+<% end %>
 <%= link_to 'Back', courses_path %>
