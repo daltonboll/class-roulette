@@ -50,6 +50,13 @@ $(document).ready(function () {
   if ($(".message-area").length > 0) {
     setTimeout(refreshMessages, 2000);
   }
+
+  $("textarea").keypress(function(event){
+    if (event.which == 13 && !(event.shiftKey)) {
+      event.preventDefault();
+      $(".new_message").submit();
+    }
+  })
 });
 
 // calls action refreshing the partial
