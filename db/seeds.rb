@@ -28,8 +28,8 @@ courses = {
 
 # Initialize lectures
 cs61c_lectures = {
-  :monday => Lecture.create(day: 'Monday', time: '3pm'),
-  :wednesday => Lecture.create(day: 'Wednesday', time: '3pm'),
+  :monday => Lecture.create(day: 'Monday', time: Time.zone.local(2015, 04, 20, 15, 0)), #April 20th, 2015 at 3:00pm
+  :wednesday => Lecture.create(day: 'Wednesday', time: Time.now),
   :friday => Lecture.create(day: 'Friday', time: '3pm'),
 }
 
