@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:index] # for a users index
   root 'pages#home'
   get 'about' => "pages#about"
