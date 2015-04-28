@@ -1,17 +1,22 @@
-<h1>Editing Lecture</h1>
+<div class="container-fluid">
+  <div class="padded-content">
+    <h1>Editing Lecture</h1>
 
-<%= simple_form_for(@lecture, url: course_lecture_path(@course, @lecture)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(@lecture, url: course_lecture_path(@course, @lecture)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :day, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], required: true %>
-    <%= f.input :time, as: :datetime, required: true %>
+      <div class="form-inputs">
+        <%= f.input :day, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], required: true %>
+        <%= f.input :time, as: :datetime, required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Show', course_lecture_path(@course, @lecture) %> |
+    <%= link_to 'Delete Lecture', course_lecture_path(@lecture.course_id, @lecture.id), method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', course_lectures_path(@course) %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Show', course_lecture_path(@course, @lecture) %> |
-<%= link_to 'Back', course_lecture_path(@course, @lecture) %>
+</div>

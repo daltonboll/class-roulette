@@ -1,32 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="padded-content">
+    <p id="notice"><%= notice %></p>
 
-<h1>All Courses</h1>
+    <h2>All Courses</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Department</th>
-      <th>Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+    <table class="center">
+      <thead>
+        <tr>
+          <th>Department</th>
+          <th>Course Number</th>
+          <th colspan="1"></th>
+          <% if user_signed_in? and current_user.is_admin %>
+          <th colspan="2"></th>
+          <% end %>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.department %></td>
-        <td><%= link_to course.name, course_path(course) %></td>
-        <% if user_signed_in? and current_user.is_admin %>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tbody>
+        <% @courses.each do |course| %>
+        <% current_link = course_lectures_path(course) %>
+          <tr>
+            <td><%= link_to course.department, current_link %></td>
+            <td><%= link_to course.name, current_link %></td>
+            <td><a href="<%= current_link %>">&#10149;</a></td>
+            <% if user_signed_in? and current_user.is_admin %>
+            <td><%= link_to 'Edit', edit_course_path(course) %></td>
+            <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <% if user_signed_in? and current_user.is_admin %>
+    <%= link_to 'New Course', new_course_path %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if user_signed_in? and current_user.is_admin %>
-<%= link_to 'New Course', new_course_path %>
-<% end %>
+  </div>
+</div>

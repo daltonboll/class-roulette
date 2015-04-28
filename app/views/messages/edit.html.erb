@@ -1,6 +1,10 @@
-<h1>Editing Message</h1>
+<div class="container-fluid">
+  <div class="padded-content">
+    <h1>Editing Message</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Show', course_lecture_message_path(@course, @lecture, @message) %> |
-<%= link_to 'Back', course_lecture_messages_path(@course, @lecture) %>
+    <%= link_to 'Show', course_lecture_message_path(@course, @lecture, @message) %> |
+    <%= link_to 'Back', course_lecture_messages_path(@course, @lecture) %>
+  </div>
+</div>

@@ -1,44 +1,48 @@
-<p id="notice"><%= notice %></p>
-<h1><%= "#{@course.department} #{@course.name}" %></h1>
-<h2><%= "Lecture time: #{@lecture.pretty_date} at #{@lecture.pretty_time}" %></h2>
+<div class="container-fluid">
+  <div class="padded-content">
+    <p id="notice"><%= notice %></p>
+    <h1><%= "#{@course.department} #{@course.name}" %></h1>
+    <h2><%= "Lecture time: #{@lecture.pretty_date} at #{@lecture.pretty_time}" %></h2>
 
-<hr/>
-<h3>Chat Room</h3>
-<div class="message-area">
-<% @lecture.messages.each do |message| %>
-	<% if message.user == current_user %>
-		<div class="user-message">
-	<% else %>
-		<strong><%= message.user.name %></strong>
-		<div class="other-user-message">
-	<% end %>
-  	<%= render message %>
-  	</div>
-<% end %>
-</div>
-
-<% if user_signed_in? %>
-  <div>
-    <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
-    <%= f.error_notification %>
-
-      <div class="form-inputs">
-        <%= f.input :text %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit %>
-      </div>
+    <hr/>
+    <h3>Chat Room</h3>
+    <div class="message-area">
+    <% @lecture.messages.each do |message| %>
+    	<% if message.user == current_user %>
+    		<div class="user-message">
+    	<% else %>
+    		<strong><%= message.user.name %></strong>
+    		<div class="other-user-message">
+    	<% end %>
+      	<%= render message %>
+      	</div>
     <% end %>
-  </div>
-<% else %>
-  <p>Please <%= link_to "sign in", new_user_session_path %> to contribute to the conversation.</p>
-<% end %>
+    </div>
 
-<% if user_signed_in? and current_user.is_admin %>
-<%= link_to 'Edit Lecture', edit_course_lecture_path(@course, @lecture) %> |
-<% end %>
-<%= link_to 'Back', course_path(@course) %>
+    <% if user_signed_in? %>
+      <div>
+        <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
+        <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :text %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Please <%= link_to "sign in", new_user_session_path %> to contribute to the conversation.</p>
+    <% end %>
+
+    <% if user_signed_in? and current_user.is_admin %>
+    <%= link_to 'Edit Lecture', edit_course_lecture_path(@course, @lecture) %> |
+    <% end %>
+    <%= link_to 'Back', course_lectures_path(@course) %>
+  </div>
+</div>
 
 <script>
 $(document).ready(function () {

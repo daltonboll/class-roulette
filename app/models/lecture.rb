@@ -19,8 +19,27 @@ class Lecture < ActiveRecord::Base
   end
 
   def pretty_date
-    #return self.time.strftime("%A, %B #{self.time.day.ordinalize}, %Y") # Weekday, Month Day, Year
-    return self.time.strftime("%A, %B %d, %Y")
+    return self.time.strftime("%A, %B #{self.time.day.ordinalize}, %Y") # Weekday, Month Day, Year
+  end
+
+  def simple_date
+    return self.time.strftime("%b %d, %Y")
+  end
+
+  def weekday
+    return self.time.strftime("%A")
+  end
+
+  def month
+    return self.time.strftime("%B")
+  end
+
+  def day
+    return self.time.strftime("%d")
+  end
+
+  def year
+    return self.time.strftime("%Y")
   end
 
 end
