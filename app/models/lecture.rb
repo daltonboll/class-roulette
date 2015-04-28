@@ -15,11 +15,11 @@ class Lecture < ActiveRecord::Base
 	has_many :messages
 
   def pretty_time
-    return self.time.strftime("%I:%M %p")
+    return self.time.strftime("%I:%M %p") # hour:minute AM/PM
   end
 
   def pretty_date
-    return self.time.strftime("%A, %B %d, %Y")
+    return self.time.strftime("%A, %B #{self.time.day.ordinalize}, %Y") # Weekday, Month Day, Year
   end
 
 end
