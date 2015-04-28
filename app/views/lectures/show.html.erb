@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1><%= "#{@course.department} #{@course.name}" %></h1>
-<h2><%= "#{@lecture.day} at #{@lecture.time.to_s("%B %d, %Y")}" %></h2>
+<h2><%= "Lecture time: #{@lecture.day} at #{@lecture.time.to_s("%B %d, %Y")}" %></h2>
 
 <hr/>
 <h3>Chat Room</h3>
@@ -17,20 +17,23 @@
 <% end %>
 </div>
 
-<div>
-  <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
-  <%= f.error_notification %>
+<% if user_signed_in? %>
+  <div>
+    <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
+    <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :text %>
-    </div>
+      <div class="form-inputs">
+        <%= f.input :text %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
-
-</div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>Please <%= link_to "sign in", new_user_session_path %> to contribute to the conversation.</p>
+<% end %>
 
 <% if user_signed_in? and current_user.is_admin %>
 <%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
