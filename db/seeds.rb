@@ -28,29 +28,29 @@ courses = {
 
 # Initialize lectures
 cs61c_lectures = {
-  :monday => Lecture.create(day: 'Monday', time: '3pm'),
-  :wednesday => Lecture.create(day: 'Wednesday', time: '3pm'),
-  :friday => Lecture.create(day: 'Friday', time: '3pm'),
+  :monday => Lecture.create(day: 'Monday', time: Time.zone.local(2015, 04, 20, 15, 0)), #April 20th, 2015 at 3:00pm
+  :wednesday => Lecture.create(day: 'Wednesday', time: Time.zone.local(2015, 04, 22, 15, 0)),
+  :friday => Lecture.create(day: 'Friday', time: Time.zone.local(2015, 04, 24, 15, 0)),
 }
 
 rubyonrails_lectures = {
-  :thursday => Lecture.create(day: 'Thursday', time: '5pm'),
+  :thursday => Lecture.create(day: 'Thursday', time: Time.zone.local(2015, 04, 23, 17, 0)),
 }
 
 cs70_lectures = {
-  :tuesday => Lecture.create(day: 'Tuesday', time: '5pm'),
-  :thursday => Lecture.create(day: 'Thursday', time: '5pm'),
+  :tuesday => Lecture.create(day: 'Tuesday', time: Time.zone.local(2015, 04, 21, 17, 0)),
+  :thursday => Lecture.create(day: 'Thursday', time: Time.zone.local(2015, 04, 23, 17, 0)),
 }
 
 ee16a_lectures = {
-  :tuesday => Lecture.create(day: 'Tuesday', time: '12pm'),
-  :thursday => Lecture.create(day: 'Thursday', time: '12pm'),
+  :tuesday => Lecture.create(day: 'Tuesday', time: Time.zone.local(2015, 04, 21, 12, 0)),
+  :thursday => Lecture.create(day: 'Thursday', time: Time.zone.local(2015, 04, 23, 12, 0)),
 }
 
 anthro2ac_lectures = {
-  :monday => Lecture.create(day: 'Monday', time: '11am'),
-  :wednesday => Lecture.create(day: 'Wednesday', time: '11am'),
-  :friday => Lecture.create(day: 'Friday', time: '11am'),
+  :monday => Lecture.create(day: 'Monday', time: Time.zone.local(2015, 04, 20, 11, 30)),
+  :wednesday => Lecture.create(day: 'Wednesday', time: Time.zone.local(2015, 04, 22, 11, 30)),
+  :friday => Lecture.create(day: 'Friday', time: Time.zone.local(2015, 04, 24, 11, 30)),
 }
 
 

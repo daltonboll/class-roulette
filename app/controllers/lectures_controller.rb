@@ -36,7 +36,16 @@ class LecturesController < ApplicationController
     if not user_signed_in? or not current_user.is_admin
       redirect_to course_lectures_path(@course)
     else
-      @lecture = Lecture.new(lecture_params)
+      year = lecture_params["time(1i)"]
+      month = lecture_params["time(2i)"]
+      day = lecture_params["time(3i)"]
+      hour = lecture_params["time(4i)"]
+      minute = lecture_params["time(5i)"]
+      time = Time.zone.local(year, month, day, hour, minute)
+
+      weekday = lecture_params[:day]
+
+      @lecture = Lecture.new(day: weekday, time: time)
       @lecture.course_id = @course.id
 
       respond_to do |format|

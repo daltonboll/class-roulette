@@ -4,7 +4,7 @@
 <h3>Lecture Times</h3>
 <ul>
   <% @course.lectures.each do |lecture| %>
-    <li><%= link_to "#{lecture.day} at #{lecture.time}", course_lecture_path(@course.id, lecture.id) %></li>
+    <li><%= link_to "#{lecture.pretty_date} at #{lecture.pretty_time}", course_lecture_path(@course.id, lecture.id) %></li>
   <% end %>
 </ul>
 
