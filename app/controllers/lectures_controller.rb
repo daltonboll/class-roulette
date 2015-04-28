@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :index]
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :refresh_messages]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :refresh_messages]
   
 
   # GET /lectures
@@ -61,6 +61,14 @@ class LecturesController < ApplicationController
       format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  $last_refresh = Time.now
+
+  def refresh_messages
+    $current_refresh = Time.now
+    @message = Message.where(created_at: $last_refresh..$current_refresh, lecture: @lecture.id)
+    $last_refresh = $current_refresh
   end
 
   private
