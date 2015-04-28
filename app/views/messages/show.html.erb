@@ -4,6 +4,15 @@
   <strong>Text:</strong>
   <%= @message.text %>
 </p>
+<p>
+  <strong>User:</strong>
+  <%= @message.user.name%>
+</p>
+<p>
+  <strong>Lecture:</strong>
+  <%= "#{@message.lecture.course.name} on #{@message.lecture.time}" %>
+</p>
+
 
 <% if user_signed_in? and current_user.is_admin %>
 <%= link_to 'Edit', edit_course_lecture_message_path(@course, @lecture, @message) %> |

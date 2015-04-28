@@ -16,6 +16,7 @@
   	<%= render message %>
   	</div>
 <% end %>
+</div>
 
 <div>
   <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
@@ -36,3 +37,24 @@
 <%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
 <% end %>
 <%= link_to 'Back', course_lectures_path(@course) %>
+
+<script>
+$(document).ready(function () {
+  // check that initial call is in a room
+  if ($(".message-area").length > 0) {
+    setTimeout(refreshMessages, 2000);
+  }
+});
+
+// calls action refreshing the partial
+function refreshMessages() {
+  // check that subsequent calls are requested from a room.
+  // Does nothing and stops otherwise.
+  if ($(".message-area").length > 0) {
+    $.ajax({
+      url: "/courses/" + <%= @course.id %> + "/lectures/" + <%= @lecture.id %> + "/refresh_messages"
+    })
+    setTimeout(refreshMessages, 2000);
+  }
+}
+</script>

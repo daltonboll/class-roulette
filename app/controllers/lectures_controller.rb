@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :new]
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :new, :refresh_messages]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :refresh_messages]
   
 
   # GET /lectures
@@ -80,6 +80,14 @@ class LecturesController < ApplicationController
         format.json { head :no_content }
       end
     end
+  end
+
+  $last_refresh = Time.now
+
+  def refresh_messages
+    $current_refresh = Time.now
+    @message = Message.where(created_at: $last_refresh..$current_refresh, lecture: @lecture.id)
+    $last_refresh = $current_refresh
   end
 
   private

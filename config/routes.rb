@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/courses/:course_id/lectures/:id/refresh_messages", to: "lectures#refresh_messages"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
