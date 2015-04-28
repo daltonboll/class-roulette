@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @course.lectures.each do |lecture| %>
+    <% @course.lectures.order(:time).each do |lecture| %>
       <tr>
         <td><%= lecture.day %></td>
         <td><%= lecture.time %></td>
