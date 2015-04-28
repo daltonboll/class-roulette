@@ -87,7 +87,7 @@ class LecturesController < ApplicationController
 
   def refresh_messages
     $current_refresh = Time.now
-    @message = Message.where(created_at: $last_refresh..$current_refresh, lecture: @lecture.id)
+    @message = Message.where(created_at: $last_refresh..$current_refresh, lecture: @lecture.id).where.not(user_id: current_user)
     $last_refresh = $current_refresh
   end
 
