@@ -19,5 +19,20 @@
 <div class="user-message"><%= render @lecture.messages.first %></div>
 </div>
 
+<div>
+  <%= simple_form_for(Message.new, url: course_lecture_path(@course, @lecture)) do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :text %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+</div>
+
 <%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
 <%= link_to 'Back', course_lectures_path(@course) %>

@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @messages.each do |message| %>
+    <% @lecture.messages.each do |message| %>
       <tr>
         <td><%= message.text %></td>
         <td><%= link_to 'Show', course_lecture_message_path(@course, @lecture, message) %></td>

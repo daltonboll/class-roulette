@@ -1,0 +1,11 @@
+<%= simple_form_for(@message, url: course_lecture_path(@course, @lecture)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">s
+    <%= f.input :text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

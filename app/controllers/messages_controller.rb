@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :index]
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :create, :index]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :create, :index]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
@@ -30,8 +30,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        format.html { redirect_to course_lecture_messages_path(@course, @lecture), notice: 'Message was successfully created.' }
+        format.json { render :show, status: :created, location: course_lecture_messages_path(@course, @lecture) }
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
