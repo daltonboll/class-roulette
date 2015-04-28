@@ -1,31 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="padded-content">
+    <p id="notice"><%= notice %></p>
 
-<h1>Listing Messages</h1>
+    <h1>Listing Messages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @lecture.messages.each do |message| %>
-      <tr>
-        <td><%= message.text %></td>
-        <td><%= link_to 'Show', course_lecture_message_path(@course, @lecture, message) %></td>
-        <% if user_signed_in? and current_user.is_admin %>
-        <td><%= link_to 'Edit', edit_course_lecture_message_path(@course, @lecture, message) %></td>
-        <td><%= link_to 'Destroy', course_lecture_message_path(@course, @lecture, message), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tbody>
+        <% @lecture.messages.each do |message| %>
+          <tr>
+            <td><%= message.text %></td>
+            <td><%= link_to 'Show', course_lecture_message_path(@course, @lecture, message) %></td>
+            <% if user_signed_in? and current_user.is_admin %>
+            <td><%= link_to 'Edit', edit_course_lecture_message_path(@course, @lecture, message) %></td>
+            <td><%= link_to 'Destroy', course_lecture_message_path(@course, @lecture, message), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <% if user_signed_in? and current_user.is_admin %>
+    <%= link_to 'New Message', new_course_lecture_message_path(@course, @lecture) %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if user_signed_in? and current_user.is_admin %>
-<%= link_to 'New Message', new_course_lecture_message_path(@course, @lecture) %>
-<% end %>
+  </div>
+</div>

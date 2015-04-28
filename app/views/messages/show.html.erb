@@ -1,20 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="padded-content">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @message.text %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @message.user.name%>
-</p>
-<p>
-  <strong>Lecture:</strong>
-  <%= "#{@message.lecture.course.name} on #{@message.lecture.time}" %>
-</p>
+    <p>
+      <strong>Text:</strong>
+      <%= @message.text %>
+    </p>
+    <p>
+      <strong>User:</strong>
+      <%= @message.user.name%>
+    </p>
+    <p>
+      <strong>Lecture:</strong>
+      <%= "#{@message.lecture.course.name} on #{@message.lecture.time}" %>
+    </p>
 
 
-<% if user_signed_in? and current_user.is_admin %>
-<%= link_to 'Edit', edit_course_lecture_message_path(@course, @lecture, @message) %> |
-<% end %>
-<%= link_to 'Back', course_lecture_messages_path(@course, @lecture) %>
+    <% if user_signed_in? and current_user.is_admin %>
+    <%= link_to 'Edit', edit_course_lecture_message_path(@course, @lecture, @message) %> |
+    <% end %>
+    <%= link_to 'Back', course_lecture_messages_path(@course, @lecture) %>
+  </div>
+</div>

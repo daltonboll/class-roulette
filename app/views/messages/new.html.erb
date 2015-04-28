@@ -1,5 +1,9 @@
-<h1>New Message</h1>
+<div class="container-fluid">
+  <div class="padded-content">
+    <h1>New Message</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Back', course_lecture_messages_path(params[:course_id], params[:lecture_id]) %>
+    <%= link_to 'Back', course_lecture_messages_path(params[:course_id], params[:lecture_id]) %>
+  </div>
+</div>
