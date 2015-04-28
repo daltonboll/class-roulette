@@ -5,7 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Weekday</th>
+      <th>Month</th>
       <th>Day</th>
+      <th>Year</th>
       <th>Time</th>
       <th colspan="3"></th>
     </tr>
@@ -13,10 +16,14 @@
 
   <tbody>
     <% @course.lectures.order(:time).each do |lecture| %>
+    <% current_link = course_lecture_path(lecture.course_id, lecture.id) %>
       <tr>
-        <td><%= lecture.day %></td>
-        <td><%= lecture.time %></td>
-        <td><%= link_to 'Show', course_lecture_path(lecture.course_id, lecture.id) %></td>
+        <td><%= link_to lecture.weekday, current_link %></td>
+        <td><%= link_to lecture.month, current_link %></td>
+        <td><%= link_to lecture.day, current_link %></td>
+        <td><%= link_to lecture.year, current_link %></td>
+        <td><%= link_to lecture.pretty_time, current_link %></td>
+        <td><a href="<%= current_link %>">&#10149;</a></td>
         <% if user_signed_in? and current_user.is_admin %>
         <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course_id, lecture.id) %></td>
         <td><%= link_to 'Destroy', course_lecture_path(lecture.course_id, lecture.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

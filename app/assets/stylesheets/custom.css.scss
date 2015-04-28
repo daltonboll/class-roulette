@@ -155,8 +155,18 @@ img {
 
 
 /* tables */
-th, td {
+table, th, td {
   padding: 5px;
+  border: 1px solid black;
+}
+
+tr:hover { 
+   background: #F1F1F1; 
+}
+
+td a { 
+   display: block; 
+   padding: 16px; 
 }
 
 /* forms */

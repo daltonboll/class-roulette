@@ -23,4 +23,20 @@ class Lecture < ActiveRecord::Base
     return self.time.strftime("%A, %B %d, %Y")
   end
 
+  def weekday
+    return self.time.strftime("%A")
+  end
+
+  def month
+    return self.time.strftime("%B")
+  end
+
+  def day
+    return self.time.strftime("%d")
+  end
+
+  def year
+    return self.time.strftime("%Y")
+  end
+
 end
