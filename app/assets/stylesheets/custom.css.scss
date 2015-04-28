@@ -9,6 +9,10 @@ $light-blue-pastel: #639BF1;
 $light-blue-pastel-light: #8AB4F7;
 
 /* universal */
+html, body {
+  height: 100%;
+}
+
 section {
   overflow: auto;
 }
@@ -22,6 +26,7 @@ section {
 }
 
 #content {
+  position: relative;
   overflow: auto;
   background-color: white;
   margin: auto;
@@ -212,6 +217,7 @@ label {
 
 /* footer */
 #footer-bar {
+  position: absolute;
   height: 110px;
   bottom: 0;
   width: 100%;
