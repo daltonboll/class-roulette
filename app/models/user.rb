@@ -16,6 +16,7 @@
 #  name                   :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  is_admin               :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

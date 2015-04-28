@@ -1,5 +1,5 @@
 class LecturesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :refresh_messages]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :index, :new, :refresh_messages]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy, :refresh_messages]
   
 
@@ -16,25 +16,36 @@ class LecturesController < ApplicationController
 
   # GET /lectures/new
   def new
-    @lecture = Lecture.new
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_lectures_path(@course)
+    else
+      @lecture = Lecture.new
+    end
   end
 
   # GET /lectures/1/edit
   def edit
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_lecture_path(@course, @lecture)
+    end
   end
 
   # POST /lectures
   # POST /lectures.json
   def create
-    @lecture = Lecture.new(lecture_params)
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_lectures_path(@course)
+    else
+      @lecture = Lecture.new(lecture_params)
 
-    respond_to do |format|
-      if @lecture.save
-        format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
-        format.json { render :show, status: :created, location: @lecture }
-      else
-        format.html { render :new }
-        format.json { render json: @lecture.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @lecture.save
+          format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
+          format.json { render :show, status: :created, location: @lecture }
+        else
+          format.html { render :new }
+          format.json { render json: @lecture.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -42,13 +53,17 @@ class LecturesController < ApplicationController
   # PATCH/PUT /lectures/1
   # PATCH/PUT /lectures/1.json
   def update
-    respond_to do |format|
-      if @lecture.update(lecture_params)
-        format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lecture }
-      else
-        format.html { render :edit }
-        format.json { render json: @lecture.errors, status: :unprocessable_entity }
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_lecture_path(@course, @lecture)
+    else
+      respond_to do |format|
+        if @lecture.update(lecture_params)
+          format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
+          format.json { render :show, status: :ok, location: @lecture }
+        else
+          format.html { render :edit }
+          format.json { render json: @lecture.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -56,10 +71,14 @@ class LecturesController < ApplicationController
   # DELETE /lectures/1
   # DELETE /lectures/1.json
   def destroy
-    @lecture.destroy
-    respond_to do |format|
-      format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
-      format.json { head :no_content }
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_lecture_path(@course, @lecture)
+    else
+      @lecture.destroy
+      respond_to do |format|
+        format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
