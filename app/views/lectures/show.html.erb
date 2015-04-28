@@ -8,14 +8,14 @@
     <h3>Chat Room</h3>
     <div class="message-area">
     <% @lecture.messages.each do |message| %>
-    	<% if message.user == current_user %>
-    		<div class="user-message">
-    	<% else %>
-    		<strong><%= message.user.name %></strong>
-    		<div class="other-user-message">
-    	<% end %>
-      	<%= render message %>
-      	</div>
+      <% if message.user == current_user %>
+        <div class="user-message">
+      <% else %>
+        <strong><%= message.user.name %></strong>
+        <div class="other-user-message">
+      <% end %>
+        <%= render message %>
+        </div>
     <% end %>
     </div>
 

@@ -9,8 +9,19 @@ $light-blue-pastel: #639BF1;
 $light-blue-pastel-light: #8AB4F7;
 
 /* universal */
+html, body {
+  height: 100%;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: white;
+}
+
 section {
   overflow: auto;
+}
+
+#wrapper {
+  min-height:100%;
+  position:relative;
 }
 
 .center {
@@ -29,6 +40,7 @@ section {
   height: 100%;
   min-height: 100%;
   box-sizing: border-box;
+  padding-bottom: 120px;
 }
 
 .padded-content {
@@ -211,7 +223,8 @@ label {
 
 
 /* footer */
-#footer-bar {
+#footer {
+  position: absolute;
   height: 110px;
   bottom: 0;
   width: 100%;
@@ -223,10 +236,4 @@ label {
     padding: 0px;
     margin: 0px;
   }
-}
-
-
-/* tables */
-td {
-  padding: 5px;
 }
