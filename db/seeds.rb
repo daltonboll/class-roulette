@@ -10,8 +10,8 @@ puts "Seeding the database..."
 
 # Initialize users
 users = {
-  :steven => User.create(name: 'Steven', email: 'steven@mail.com', password: 'password'),
-  :dalton => User.create(name: 'Dalton', email: 'dalton@mail.com', password: 'password')
+  :steven => User.create(name: 'Steven', email: 'steven@mail.com', password: 'password', is_admin: true),
+  :dalton => User.create(name: 'Dalton', email: 'dalton@mail.com', password: 'password', is_admin: true)
 }
 
 
