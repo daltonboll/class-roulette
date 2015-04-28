@@ -15,12 +15,9 @@
   	<%= render message %>
   	</div>
 <% end %>
-<!-- Uncomment to see a current-user-style message until message creation has been implemented -->
-<div class="user-message"><%= render @lecture.messages.first %></div>
-</div>
 
 <div>
-  <%= simple_form_for(Message.new, url: course_lecture_path(@course, @lecture)) do |f| %>
+  <%= simple_form_for(Message.new, url: course_lecture_messages_path(@course, @lecture)) do |f| %>
   <%= f.error_notification %>
 
     <div class="form-inputs">

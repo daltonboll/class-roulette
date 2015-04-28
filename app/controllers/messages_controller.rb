@@ -27,10 +27,11 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message.lecture_id = @lecture.id
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to course_lecture_messages_path(@course, @lecture), notice: 'Message was successfully created.' }
+        format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: course_lecture_messages_path(@course, @lecture) }
       else
         format.html { render :new }
