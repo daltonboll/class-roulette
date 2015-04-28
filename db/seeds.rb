@@ -17,9 +17,9 @@ users = {
 
 # Initialize courses
 courses = {
-  :cs61c => Course.create(name: 'cs61c'),
-  :rubyonrails => Course.create(name: 'Ruby On Rails'),
-  :cs70 => Course.create(name: 'cs70')
+  :cs61c => Course.create(department: 'CS', name: '61C'),
+  :rubyonrails => Course.create(department: 'CS', name: '198: Ruby On Rails Decal'),
+  :cs70 => Course.create(department: 'CS', name: '70')
 }
 
 
