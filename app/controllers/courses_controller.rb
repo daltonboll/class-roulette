@@ -14,25 +14,36 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to courses_path
+    else
+      @course = Course.new
+    end
   end
 
   # GET /courses/1/edit
   def edit
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to course_path(@course)
+    end
   end
 
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to courses_path
+    else
+      @course = Course.new(course_params)
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @course.save
+          format.html { redirect_to @course, notice: 'Course was successfully created.' }
+          format.json { render :show, status: :created, location: @course }
+        else
+          format.html { render :new }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -40,13 +51,17 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to courses_path
+    else
+      respond_to do |format|
+        if @course.update(course_params)
+          format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+          format.json { render :show, status: :ok, location: @course }
+        else
+          format.html { render :edit }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -54,10 +69,14 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
+    if not user_signed_in? or not current_user.is_admin
+      redirect_to courses_path
+    else
+      @course.destroy
+      respond_to do |format|
+        format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
