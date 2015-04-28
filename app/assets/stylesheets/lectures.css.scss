@@ -3,37 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .message-area {
-	position: relative;
-	width: 50%;
+  position: relative;
+  width: 50%;
 }
 
 .user-message, .other-user-message {
-	
+  margin-bottom: 4px;
 }
 .user-message {
-	text-align: right;
+  text-align: right;
 }
 .other-user-message {
-	text-align: left;
+  text-align: left;
 }
 .message-bubble {
-	display: inline-block;
-	max-width: 170px;
-	padding: 6px 6px 4px 6px;
-	border-radius: 4px;
-	text-align: left;
-	margin: 3px 3px 0px 3px;
+  display: inline-block;
+  max-width: 170px;
+  padding: 6px 6px 4px 6px;
+  border-radius: 4px;
+  text-align: left;
+  margin: 3px 3px 0px 3px;
 }
 .user-message > .message-bubble {
-	background-color: #4CAF50;
-	color: white;
-	border: 1px solid #388E3C;
-	border-top: none;
-	border-bottom-width: 2px;
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #388E3C;
+  border-top: none;
+  border-bottom-width: 2px;
 }
 .other-user-message > .message-bubble {
-	background-color: #E0E0E0;
-	border: 1px solid #757575;
-	border-top: none;
-	border-bottom-width: 2px;
+  background-color: #E0E0E0;
+  border: 1px solid #757575;
+  border-top: none;
+  border-bottom-width: 2px;
 }
