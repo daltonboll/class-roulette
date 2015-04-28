@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @course.name %></h1>
-<h2><%= "#{@lecture.day} at #{@lecture.time}" %></h2>
+<h2>Test</h2>
+<h2><%= "#{@lecture.day} at #{@lecture.time.to_s("%B %d, %Y")}" %></h2>
 
 <hr/>
 <h3>Chat Room</h3>
