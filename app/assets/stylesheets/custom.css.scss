@@ -1,5 +1,5 @@
 /* for nav menu toggle */
-
+$grid-float-breakpoint: 930px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -198,7 +198,7 @@ label {
   margin-right: 10px;
   margin-left: 10px;
   color: white;
-  padding-top: 9px;
+  padding-top: 12px;
   padding-bottom: 10px;
   font-size: 22px;
 
@@ -215,8 +215,8 @@ label {
   color: white;
   font-size: 22px;
   font-weight: normal;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   padding-right: 13px;
   padding-left: 13px;
 }

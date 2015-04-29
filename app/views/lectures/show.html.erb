@@ -50,7 +50,7 @@
 $(document).ready(function () {
   // check that initial call is in a room
   if ($(".message-area").length > 0) {
-    setTimeout(refreshMessages, 10000);
+    setTimeout(refreshMessages, 2000);
   }
 
   $("textarea").keypress(function(event){
@@ -69,7 +69,7 @@ function refreshMessages() {
     $.ajax({
       url: "/courses/" + <%= @course.id %> + "/lectures/" + <%= @lecture.id %> + "/refresh_messages"
     })
-    setTimeout(refreshMessages, 10000);
+    setTimeout(refreshMessages, 2000);
   }
 }
 </script>
