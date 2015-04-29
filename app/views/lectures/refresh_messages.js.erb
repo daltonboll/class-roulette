@@ -1,1 +1,5 @@
-$(".message-area").append("<div class='other-user-message'><%= escape_javascript render :partial => @message %></div>")
+<% if @message.length > 0 %>
+	<% @message.each do |message| %>
+		$(".message-area").append("<strong><%= escape_javascript message.user.name %></strong><div class='other-user-message'><%= escape_javascript render :partial => message %></div>");
+	<% end %>
+<% end %>
