@@ -16,11 +16,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    if not user_signed_in? or not current_user.is_admin
-      redirect_to course_lecture_messages_path(@course, @lecture)
-    else
       @message = Message.new
-    end
   end
 
   # GET /messages/1/edit
@@ -33,21 +29,17 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    if not user_signed_in? or not current_user.is_admin
-      redirect_to course_lecture_messages_path(@course, @lecture)
-    else
-      @message = Message.new(message_params)
-      @message.lecture_id = @lecture.id
-      @message.user_id = current_user.id
+    @message = Message.new(message_params)
+    @message.lecture_id = @lecture.id
+    @message.user_id = current_user.id
 
-      respond_to do |format|
-        if @message.save
-          format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Message was successfully created.' }
-          format.json { render :show, status: :created, location: course_lecture_messages_path(@course, @lecture) }
-        else
-          format.html { render :new }
-          format.json { render json: @message.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Message was successfully created.' }
+        format.json { render :show, status: :created, location: course_lecture_messages_path(@course, @lecture) }
+      else
+        format.html { render :new }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
