@@ -1,5 +1,5 @@
 # Class Roulette
-website: http://classroulette.herokuapp.com/
+Website: http://classroulette.herokuapp.com/
 
 Team Members: Dalton Boll, Steven Traversi
 
@@ -24,6 +24,6 @@ has text and belongs to both a User and a Lecture
 
 ###Division of Labor
 Together: Created all models, wrote styling for the views
-Dalton: 
+Dalton: Implemented authorization logic, routing logic, seeds.rb, sorting, styling templates
 Steven: Implemented database polling for chat rooms
 
