@@ -27,5 +27,5 @@ Together: Created all models, wrote styling for the views
 
 Dalton: Implemented authorization logic, routing logic, seeds.rb, sorting, styling templates
 
-Steven: Implemented database polling for chat rooms
+Steven: Implemented database polling for chat rooms, chatroom styling, video demo
 
