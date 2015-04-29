@@ -2,9 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.message-area {
+.chat-wrapper {
   position: relative;
-  width: 50%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.chat-wrapper h3 {
+  display: inline-block;
+}
+
+.message-area {
+  text-align: left;
+  position: relative;
 }
 
 .user-message, .other-user-message {
@@ -18,7 +28,7 @@
 }
 .message-bubble {
   display: inline-block;
-  max-width: 170px;
+  max-width: 350px;
   padding: 6px 6px 4px 6px;
   border-radius: 4px;
   text-align: left;
@@ -36,4 +46,14 @@
   border: 1px solid #757575;
   border-top: none;
   border-bottom-width: 2px;
+}
+
+form {
+  text-align: right;
+}
+textarea {
+  width: 75%;
+  height: 74px;
+  font-size: 18px;
+  resize: none;
 }

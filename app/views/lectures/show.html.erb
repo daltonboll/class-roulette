@@ -5,6 +5,7 @@
     <h2><%= "Lecture time: #{@lecture.pretty_date} at #{@lecture.pretty_time}" %></h2>
 
     <hr/>
+    <div class="chat-wrapper">
     <h3>Chat Room</h3>
     <div class="message-area">
     <% @lecture.messages.each do |message| %>
@@ -25,7 +26,7 @@
         <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :text %>
+            <%= f.input :text, label: false %>
           </div>
 
           <div class="form-actions">
@@ -36,6 +37,7 @@
     <% else %>
       <p>Please <%= link_to "sign in", new_user_session_path %> to contribute to the conversation.</p>
     <% end %>
+    </div>
 
     <% if user_signed_in? and current_user.is_admin %>
     <%= link_to 'Edit Lecture', edit_course_lecture_path(@course, @lecture) %> |
@@ -48,7 +50,7 @@
 $(document).ready(function () {
   // check that initial call is in a room
   if ($(".message-area").length > 0) {
-    setTimeout(refreshMessages, 2000);
+    setTimeout(refreshMessages, 10000);
   }
 
   $("textarea").keypress(function(event){
@@ -67,7 +69,7 @@ function refreshMessages() {
     $.ajax({
       url: "/courses/" + <%= @course.id %> + "/lectures/" + <%= @lecture.id %> + "/refresh_messages"
     })
-    setTimeout(refreshMessages, 2000);
+    setTimeout(refreshMessages, 10000);
   }
 }
 </script>
