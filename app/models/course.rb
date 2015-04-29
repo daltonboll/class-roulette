@@ -11,5 +11,7 @@
 
 class Course < ActiveRecord::Base
 	has_many :lectures
+  validates :name, presence: true
+  validates :department, presence: true
 
 end

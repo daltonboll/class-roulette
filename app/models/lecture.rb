@@ -13,6 +13,8 @@
 class Lecture < ActiveRecord::Base
 	belongs_to :course
 	has_many :messages
+  validates :day, presence: true
+  validates :time, presence: true
 
   def pretty_time
     return self.time.strftime("%I:%M %p") # hour:minute AM/PM

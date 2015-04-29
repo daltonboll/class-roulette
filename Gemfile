@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'rails_12factor', group: :production # for heroku production
 gem 'devise'
 gem 'cancancan'
+gem 'fastimage'
 gem 'simple_form'
 gem 'annotate'
 gem 'bootstrap-sass', '~> 3.2.0' # for bootstrap
