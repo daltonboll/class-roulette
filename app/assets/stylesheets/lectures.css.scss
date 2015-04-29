@@ -7,6 +7,18 @@
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
+
+  form {
+    text-align: right;
+  }
+
+  textarea {
+    width: 75%;
+    height: 74px;
+    font-size: 18px;
+    resize: none;
+  }
+
 }
 .chat-wrapper h3 {
   display: inline-block;
@@ -46,14 +58,4 @@
   border: 1px solid #757575;
   border-top: none;
   border-bottom-width: 2px;
-}
-
-form {
-  text-align: right;
-}
-textarea {
-  width: 75%;
-  height: 74px;
-  font-size: 18px;
-  resize: none;
 }
